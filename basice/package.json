@@ -2,13 +2,13 @@
   "name": "errorhandling",
   "version": "1.0.0",
   "description": "error handling",
-  "main": "index.js",
+  "type": "module",
+  "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
     "test": "standard && node my-tests.js"
   },
-  
   "repository": {
     "type": "git",
     "url": "git+https://github.com/yogeshomkar2012/errorHandling.git"
@@ -21,10 +21,12 @@
   "homepage": "https://github.com/yogeshomkar2012/errorHandling#readme",
   "dependencies": {
     "express": "^4.21.0",
+    "mongodb": "^6.9.0",
+    "mongoose": "^8.7.0",
     "standard": "^17.1.2"
   },
   "devDependencies": {
     "nodemon": "^3.1.7",
-      "standard": "*"
+    "standard": "*"
   }
 }
