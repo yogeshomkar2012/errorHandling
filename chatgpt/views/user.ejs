@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile - <%= user.name %></title>
+  <link rel="stylesheet" href="/styles.css"> <!-- Optional: Link to your CSS file -->
+</head>
+<body>
+  <header>
+    <h1>User Profile: <%= user.name %></h1>
+  </header>
+  
+  <main>
+    <!-- Display user details -->
+    <p><strong>Name:</strong> <%= user.name %></p>
+    <p><strong>Email:</strong> <%= user.email %></p>
+    <!-- You can add more user fields if available -->
+    <% if (user.age) { %>
+      <p><strong>Age:</strong> <%= user.age %></p>
+    <% } %>
+    <% if (user.address) { %>
+      <p><strong>Address:</strong> <%= user.address %></p>
+    <% } %>
+  </main>
+
+  <footer>
+    <p>© <%= new Date().getFullYear() %> User Management System</p>
+  </footer>
+</body>
+</html>
