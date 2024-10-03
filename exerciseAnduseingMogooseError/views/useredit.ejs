@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form method="post">
+      <h1>Add User</h1>
+      <hr />
+      <div>
+        <label for="name">Name</label>
+        <br />
+        <input type="text" name="name" value="<%=userData.name%>" id="" />
+      </div>
+      <div>
+        <label for="email">eamil</label>
+        <br />
+        <input type="email" name="email" value="<%=userData.email%>" id="" />
+      </div>
+      <br />
+      <input hidden type="text" name="id" value="<%=userData._id%>" />
+      <button type="submit">Add user</button>
+    </form>
+  </body>
+</html>

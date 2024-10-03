@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <span id="successmsg"></span>
+    <form action="" id="userform" method="post">
+      <h1>Add User</h1>
+      <hr />
+      <div>
+        <label for="name">Name</label> <br />
+        <input type="text" name="name" id="name" />
+        <br />
+        <span id="nameError"></span> <br />
+        <% if(errs != null){%>
+        <span><%=errs.name%></span>
+        <%}%>
+      </div>
+      <div>
+        <label for="email">eamil</label> <br />
+        <input type="email" name="email" id="email" />
+        <br />
+        <% if(errs != null){%>
+        <span><%=errs.email%></span>
+        <%}%>
+        <span id="emailError"></span>
+      </div>
+      <br />
+      <button type="submit">Add user</button>
+    </form>
+    <script>
+      const userform = document.getElementById("userform");
+      const nameError = document.getElementById("nameError");
+      const emailError = document.getElementById("emailError");
+      const successmsg = document.getElementById("successmsg");
+      userform.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const email = userform.email.value;
+        const name = userform.name.value;
+
+        emailError.textContent = "";
+        nameError.textContent = "";
+        successmsg.textContent = "";
+        try {
+          const result = await fetch("/user/adduser", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, email }),
+          });
+          const data = await result.json();
+          if (data.errs) {
+            emailError.textContent = data.errs.email;
+            nameError.textContent = data.errs.name;
+          }
+          if (data.success) {
+            location.assign("/user/adduser");
+          }
+          successmsg.textContent = "Data created Successfully";
+         
+        } catch (error) {
+          console.log(error);
+        }
+      });
+    </script>
+  </body>
+</html>
